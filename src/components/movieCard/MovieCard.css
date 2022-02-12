@@ -1,0 +1,13 @@
+.movie-card {
+    cursor: pointer;
+}
+
+.movie-card-poster {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+.movie-card-title {
+    font-size: 2.2vh;
+}

@@ -1,0 +1,18 @@
+.home-container {
+    width: 90%;
+    margin: auto;
+}
+
+.top-rated-container {
+    margin: 15vh 0;
+}
+
+.upcoming-container {
+    margin: 15vh 0;
+}
+
+.movies-grid-container {
+    display: grid;
+    gap: 2vw;
+    grid-template-columns: repeat(5,1fr);
+}

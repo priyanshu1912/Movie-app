@@ -1,0 +1,93 @@
+.details {
+    background: black;
+    color: white;
+    padding: 15vh 0 10vh 0;
+}
+
+.details-container {
+    width: 80%;
+    margin: auto;
+}
+
+.movie-overview-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie-overview-poster {
+    width: 500px;
+    height: 600px;
+    object-fit: contain;
+}
+
+.movie-overview-info {
+    width: 60%;
+}
+
+.movie-overview-title {
+    font-size: 6vh;
+}
+
+.movie-overview-overview {
+    margin: 2vh 0;
+    color: grey;
+}
+
+.movie-overview-genres {
+    display: flex;
+    margin: 4vh 0;
+}
+
+.movie-overview-genres-item {
+    border: 1px solid lightgrey;
+    padding: 0.5vh 1vw;
+    border-radius: 25px;
+    margin-right: 0.5vw;
+}
+
+.movie-overview-ratings {
+    margin: 3vh 0;
+}
+
+
+/* casts */
+.casts-container {
+    width: 80%;
+    margin: 15vh auto;
+}
+
+.cast-grid {
+    display: grid;
+    gap: 2vw;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.movie-cast {
+    display: flex;
+    align-items: center;
+}
+
+.movie-cast-image {
+    width: 120px;
+    margin-right: 1vw;
+    clip-path: circle(35%);
+}
+
+.movie-cast-character {
+    font-size: 2.2vh;
+    color: grey;
+}
+
+
+/* similar */
+.similar-container {
+    width: 80%;
+    margin: 15vh auto;
+}
+
+.similar-movies-grid {
+    display: grid;
+    gap: 2vw;
+    grid-template-columns: repeat(5,1fr);
+}
