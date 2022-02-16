@@ -5,6 +5,7 @@ import MovieCard from '../movieCard/MovieCard'
 
 function Home(){
     const [latest,setLatest] = useState([])
+    const [popular,setPopular] = useState(null)
     const [topRated,setTopRated] = useState(null)
     const [upcoming,setUpcoming] = useState(null)
 
@@ -14,80 +15,175 @@ function Home(){
 
     const getData = () => {
         const latestMoviesUrl = `https://api.themoviedb.org/3/movie/latest?api_key=${process.env.REACT_APP_TMDB_KEY}`
+        const popularMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}`
         const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}`
         const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}`
 
         const latestMoviesData = axios.get(latestMoviesUrl)
+        const popularMoviesData = axios.get(popularMoviesUrl)
         const topRatedMoviesData = axios.get(topRatedMoviesUrl)
         const upcomingMoviesData = axios.get(upcomingMoviesUrl)
 
-        axios.all([latestMoviesData,topRatedMoviesData,upcomingMoviesData]).then(
+        axios.all([latestMoviesData, popularMoviesData,topRatedMoviesData,upcomingMoviesData]).then(
             axios.spread((...allData) => {
                 const latestData = allData[0].data
-                const topRatedData = allData[1].data.results
-                const upcomingData = allData[2].data.results
+                const popularData = allData[1].data.results
+                const topRatedData = allData[2].data.results
+                const upcomingData = allData[3].data.results
 
                 setLatest(latestData)
+                setPopular(popularData)
                 setTopRated(topRatedData)
                 setUpcoming(upcomingData)
 
-                console.log({latestData},{topRatedData},{upcomingData})
+                console.log({latestData}, {popularData},{topRatedData},{upcomingData})
             })
         )
         
     }
 
-    return (
-        <div className='home-container'>
 
-        <div className='top-rated-container'>
-            <h1>Top Rated</h1>
-            {
-                topRated ?
-                <div className='movies-grid-container'>
-                    {
-                        topRated.slice(0,10).map(item => {
+    const [searchInput,setSearchInput] = useState('')
 
-                            let id = item.id
-                            let image = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
-                            let name = item.title
+    const [search,setSearch] = useState(null)
 
-                            return (
-                                <MovieCard id={id} image={image} name={name} />
-                            )
-                        })
-                    }
-                </div>
-                :
-                null
-            }
-        </div>
+    const searchMovie = (e) => {
+        e.preventDefault()
 
+        let searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&query=${searchInput}`
         
-        <div className='upcoming-container'>
-            <h1>Upcoming</h1>
-            {
-                upcoming ?
-                <div className='movies-grid-container'>
-                    {
-                        upcoming.slice(0,10).map(item => {
+        axios.get(searchMovieUrl)
+        .then(res => {
+            console.log(res.data.results)
+            setSearch(res.data.results)
+        })
+        .catch(err => {
+            console.log(err)
+        })
 
-                            let id = item.id
-                            let image = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
-                            let name = item.title
+    }
 
-                            return (
-                                <MovieCard id={id} image={image} name={name} />
-                            )
-                        })
-                    }
-                </div>
-                :
-                null
-            }
+    return (
+        <>
+
+        <div className='search'>
+            <div className='search-container'>
+                <div className='search-welcome'>Welcome.</div>
+                <div className='search-text'>Millions of movies, TV shows and people to discover. Explore now.</div>
+
+                <form onSubmit={searchMovie}>       
+                    <input onChange={e => setSearchInput(e.target.value)} className='search-input' type='text' placeholder='Search for movie, tv show....'/>
+                </form>    
+            </div>
         </div>
 
-        </div>
+
+        {
+
+            search ?
+
+
+            <div className='movies-container'>
+                {
+                    popular ?
+                    <div className='movies-grid-container'>
+                        {
+                            search.slice(0,12).map(item => {
+
+                                let id = item.id
+                                let image = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+                                let name = item.title
+
+                                return (
+                                    <MovieCard id={id} image={image} name={name} />
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    null
+                }
+            </div>
+
+
+            :
+
+
+            <>
+            <div className='movies-container'>
+                <div className='heading'>Popular</div>
+                {
+                    popular ?
+                    <div className='movies-grid-container'>
+                        {
+                            popular.slice(0,12).map(item => {
+
+                                let id = item.id
+                                let image = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+                                let name = item.title
+
+                                return (
+                                    <MovieCard id={id} image={image} name={name} />
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    null
+                }
+            </div>
+
+
+            <div className='movies-container'>
+                <div className='heading'>Top Rated</div>
+                {
+                    topRated ?
+                    <div className='movies-grid-container'>
+                        {
+                            topRated.slice(0,12).map(item => {
+
+                                let id = item.id
+                                let image = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+                                let name = item.title
+
+                                return (
+                                    <MovieCard id={id} image={image} name={name} />
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    null
+                }
+            </div>
+
+            
+            <div className='movies-container'>
+                <div className='heading'>Upcoming</div>
+                {
+                    upcoming ?
+                    <div className='movies-grid-container'>
+                        {
+                            upcoming.slice(0,12).map(item => {
+
+                                let id = item.id
+                                let image = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+                                let name = item.title
+
+                                return (
+                                    <MovieCard id={id} image={image} name={name} />
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    null
+                }
+            </div>
+            </>
+        }
+
+        </>
     )
 }
 

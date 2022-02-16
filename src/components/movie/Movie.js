@@ -49,34 +49,34 @@ function Movie(){
                     details &&
                     <>
                     <div className="movie-overview-container">
-                            <img src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} className="movie-overview-poster"/>
-                            <div className="movie-overview-info">
-                                <div className="movie-overview-title">{details.title}</div>
-                                <div className="movie-overview-overview">{details.overview}</div>
-                                <div className="movie-overview-genres">
-                                    {
-                                        details.genres.map(item => {
-                                            return (
-                                                <div key={item.id} className='movie-overview-genres-item'>
-                                                    {item.name}
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                                <div className="movie-overview-ratings">{details.vote_average} Ratings</div>
-                                <div>Released : {details.release_date}</div>
-                                <div>Duration : {details.runtime}m</div>
-                                <div>Country : 
-                                    {
-                                        details.production_countries.map(item => {
-                                            return (
-                                                <span key={item.name}> {item.name}</span>
-                                            ) 
-                                        })
-                                    }
-                                </div>
+                        <img src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} className="movie-overview-poster"/>
+                        <div className="movie-overview-info">
+                            <div className="movie-overview-title">{details.title}</div>
+                            <div className="movie-overview-overview">{details.overview}</div>
+                            <div className="movie-overview-genres">
+                                {
+                                    details.genres.map(item => {
+                                        return (
+                                            <div key={item.id} className='movie-overview-genres-item'>
+                                                {item.name}
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
+                            <div className="movie-overview-ratings">{details.vote_average} Ratings</div>
+                            <div>Released : {details.release_date}</div>
+                            <div>Duration : {details.runtime}m</div>
+                            <div>Country : 
+                                {
+                                    details.production_countries.map(item => {
+                                        return (
+                                            <span key={item.name}> {item.name}</span>
+                                        ) 
+                                    })
+                                }
+                            </div>
+                        </div>
                     </div>
                     </>
                 }
@@ -116,7 +116,7 @@ function Movie(){
                     similar &&
                     <div className="similar-movies-grid">
                         {
-                            similar.slice(0,10).map(item => {
+                            similar.slice(0,12).map(item => {
                                 let id = item.id
                                 let image = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
                                 let name = item.title

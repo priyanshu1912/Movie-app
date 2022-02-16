@@ -1,4 +1,9 @@
 .nav {
     height: 10vh;
     width: 100%;
+    background-color: rgb(18, 18, 58);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
