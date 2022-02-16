@@ -17,3 +17,7 @@
 <b>
   API used is: TMDB
 </b>
+
+<b>
+  App is deployed using netlify and the project is live at https://myapiproject.netlify.app/
+</b>
