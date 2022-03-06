@@ -52,3 +52,20 @@
 .link:hover {
     color: #3FE0C5;
 }
+
+.active {
+    color: #3FE0C5;
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .nav-options {
+        width: 60%;
+        margin: auto;
+    }
+
+    .nav-profile {
+        display: none;
+    }
+}

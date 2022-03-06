@@ -1,7 +1,8 @@
-import Raect,{useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import './Home.css'
 import axios from 'axios'
 import MovieCard from '../movieCard/MovieCard'
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function Home(){
     const [latest,setLatest] = useState([])
@@ -10,6 +11,7 @@ function Home(){
     const [upcoming,setUpcoming] = useState(null)
 
     useEffect(() => {
+        window.scrollTo(0,0)
         getData()
     },[])
 
@@ -66,7 +68,12 @@ function Home(){
     return (
         <div className='home-container'>
 
-        <div className='search'>
+        <div style={{
+            backgroundImage:'url("https://image.tmdb.org/t/p/w500/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg")',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+        }}>
             <div className='search-container'>
                 <div className='search-welcome'>Welcome</div>
                 <div className='search-text'>Explore millions of movies, tv shows and more</div>
@@ -129,7 +136,9 @@ function Home(){
                         }
                     </div>
                     :
-                    null
+                    <div className='loader-container'>
+                        <ScaleLoader className='loader'/>
+                    </div>
                 }
             </div>
 
@@ -153,7 +162,9 @@ function Home(){
                         }
                     </div>
                     :
-                    null
+                    <div className='loader-container'>
+                        <ScaleLoader className='loader'/>
+                    </div>
                 }
             </div>
 
@@ -177,7 +188,9 @@ function Home(){
                         }
                     </div>
                     :
-                    null
+                    <div className='loader-container'>
+                        <ScaleLoader className='loader'/>
+                    </div>
                 }
             </div>
             </>

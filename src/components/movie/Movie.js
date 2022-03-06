@@ -5,6 +5,7 @@ import MovieCard from "../movieCard/MovieCard"
 import './Movie.css'
 import {BiTime,BiCalendarAlt} from 'react-icons/bi'
 import {GoLocation} from 'react-icons/go'
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function Movie(){
     const [details,setDetails] = useState(null)
@@ -15,6 +16,7 @@ function Movie(){
     const id = location.state
 
     useEffect(()=>{
+        window.scrollTo(0,0)
         getDetails()
     },[])
 
@@ -48,10 +50,12 @@ function Movie(){
             <div className="details">
                 <div className="details-container">
                 {
-                    details &&
+                    details ?
                     <>
-                    <div className="movie-overview-container">
-                        <img src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} className="movie-overview-poster"/>
+                    <div 
+                    className="movie-overview-container"
+                    >
+                        <img src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} alt="poster" className="movie-overview-poster"/>
                         <div className="movie-overview-info">
                             <div className="movie-overview-title">{details.title}</div>
                             <div className="movie-overview-overview">{details.overview}</div>
@@ -92,6 +96,10 @@ function Movie(){
                         </div>
                     </div>
                     </>
+                    :
+                    <div className='loader-container'>
+                        <ScaleLoader className='loader'/>
+                    </div>
                 }
                 </div>
             </div>
@@ -100,7 +108,7 @@ function Movie(){
             <div className="casts-container">
                 <h1>Top Casts</h1>
                 {
-                    credits &&
+                    credits ?
                     <div className="cast-grid">
                     {
                         credits.cast.slice(0,8).map(item => {
@@ -109,7 +117,7 @@ function Movie(){
 
                             return (
                                 <div key={item.id} className="movie-cast">
-                                    <img src={image} alt='cast-image' className="movie-cast-image" />
+                                    <img src={image} alt='cast' className="movie-cast-image" />
                                     <div>
                                         <div className="movie-cast-name">{item.name}</div>
                                         <div className="movie-cast-character">as {item.character}</div>
@@ -119,6 +127,10 @@ function Movie(){
                         })
                     }
                     </div>
+                    :
+                    <div className='loader-container'>
+                        <ScaleLoader className='loader'/>
+                    </div>
                 }
             </div>
 
@@ -126,7 +138,7 @@ function Movie(){
             <div className="similar-container">
                 <h1>You may also like</h1>
                 {
-                    similar &&
+                    similar ?
                     <div className="similar-movies-grid">
                         {
                             similar.slice(0,12).map(item => {
@@ -139,6 +151,10 @@ function Movie(){
                                 )
                             })
                         }
+                    </div>
+                    :
+                    <div className='loader-container'>
+                        <ScaleLoader className='loader'/>
                     </div>
                 }
             </div>

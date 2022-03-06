@@ -1,12 +1,12 @@
 import React from 'react'
 import './Nav.css'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 function Nav() {
     return (
         <div className='nav'>
             <div className='nav-options'>
-                <Link className='link' to="/">Home</Link>
+                <NavLink activeClassName="active" className='link' to="/">Home</NavLink>
                 <div>Movies</div>
                 <div>TV shows</div>
             </div>

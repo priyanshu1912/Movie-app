@@ -2,18 +2,20 @@
     padding-top: 10vh;
 }
 
-.search {
+/* .search {
     width: 100%;
     padding: 15vh 0;
     background-color: black;
     color: white;
-}
+} */
 
 .search-container {
-    width: 90%;
-    margin: auto;
+    width: 100%;
     text-align: center;
     letter-spacing: 2px;
+    background-color: rgb(18, 18, 58,0.6);
+    color: white;
+    padding: 15vh 0;
 }
 
 .search-welcome {
@@ -29,7 +31,7 @@
 .search-input {
     padding: 1.5vh 0;
     font-family: Poppins;
-    width: 98%;
+    width: 80%;
     margin: 5vh 0;
     border-radius: 30px;
     border: none;
@@ -58,15 +60,35 @@
     margin-bottom: 3vh;
 }
 
+.loader-container {
+    text-align: center;
+}
+
+.loader {
+    color: rgb(18, 18, 58);
+}
+
 @media screen and (max-width: 500px) {
 
-    .search {
+    /* .search {
         padding: 5vh 0;
+    } */
+
+    .search-container {
+        padding: 5vh 0;
+    }
+
+    .search-welcome {
+        font-size: 6vh;
+    }
+
+    .search-text {
+        font-size: 3vh;
     }
 
     .search-input {
         padding-left: 4vw;
-        width: 96%;
+        width: 85%;
     }
 
     .movies-grid-container {
