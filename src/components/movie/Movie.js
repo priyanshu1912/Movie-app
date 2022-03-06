@@ -3,6 +3,8 @@ import React,{useState,useEffect} from "react"
 import {useLocation} from 'react-router-dom'
 import MovieCard from "../movieCard/MovieCard"
 import './Movie.css'
+import {BiTime,BiCalendarAlt} from 'react-icons/bi'
+import {GoLocation} from 'react-icons/go'
 
 function Movie(){
     const [details,setDetails] = useState(null)
@@ -41,7 +43,7 @@ function Movie(){
     }
 
     return (
-        <>
+        <div className="movie-container">
 
             <div className="details">
                 <div className="details-container">
@@ -64,10 +66,21 @@ function Movie(){
                                     })
                                 }
                             </div>
+
                             <div className="movie-overview-ratings">{details.vote_average} Ratings</div>
-                            <div>Released : {details.release_date}</div>
-                            <div>Duration : {details.runtime}m</div>
-                            <div>Country : 
+
+                            <div className="movie-overview-date">
+                                <BiCalendarAlt className="movie-overview-icons"/> 
+                                <div>{details.release_date}</div>
+                            </div>
+
+                            <div className="movie-overview-date">
+                                <BiTime className="movie-overview-icons"/> 
+                                <div>{details.runtime}m</div>
+                            </div>
+
+                            <div className="movie-overview-date">
+                                <GoLocation className="movie-overview-icons"/> 
                                 {
                                     details.production_countries.map(item => {
                                         return (
@@ -90,7 +103,7 @@ function Movie(){
                     credits &&
                     <div className="cast-grid">
                     {
-                        credits.cast.slice(0,6).map(item => {
+                        credits.cast.slice(0,8).map(item => {
 
                             let image = `https://image.tmdb.org/t/p/w500/${item.profile_path}`
 
@@ -130,7 +143,7 @@ function Movie(){
                 }
             </div>
 
-        </>
+        </div>
     )
 }
 

@@ -5,5 +5,50 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1000;
+}
+
+.nav-options {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5vw;
+}
+
+.nav-profile {
+    display: flex;
+    margin-right: 5vw;
+}
+
+.login-button {
+    border: 1.5px solid white;
+    border-radius: 5px;
+    padding: 0.5vh 0.5vw;
+    cursor: pointer;
+    margin-right: 1vw;
+}
+.login-button:hover {
+    border: 1.5px solid #3FE0C5;
+    color: #3FE0C5;
+}
+
+.signup-button {
+    padding: 0.5vh 0.5vw;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.signup-button:hover {
+    background-color: #3FE0C5;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+.link:hover {
+    color: #3FE0C5;
 }

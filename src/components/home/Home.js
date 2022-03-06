@@ -64,12 +64,12 @@ function Home(){
     }
 
     return (
-        <>
+        <div className='home-container'>
 
         <div className='search'>
             <div className='search-container'>
-                <div className='search-welcome'>Welcome.</div>
-                <div className='search-text'>Millions of movies, TV shows and people to discover. Explore now.</div>
+                <div className='search-welcome'>Welcome</div>
+                <div className='search-text'>Explore millions of movies, tv shows and more</div>
 
                 <form onSubmit={searchMovie}>       
                     <input onChange={e => setSearchInput(e.target.value)} className='search-input' type='text' placeholder='Search for movie, tv show....'/>
@@ -183,7 +183,7 @@ function Home(){
             </>
         }
 
-        </>
+        </div>
     )
 }
 

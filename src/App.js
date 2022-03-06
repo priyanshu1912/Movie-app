@@ -5,6 +5,7 @@ import Home from './components/home/Home';
 import {useState} from 'react'
 import Nav from './components/nav/Nav';
 import SearchPage from './components/search/SearchPage';
+import Footer from './components/footer/Footer';
 
 function App() {
   const [search,setSearch] = useState('')
@@ -12,17 +13,15 @@ function App() {
 
   return (
     <>
-      {/* <Nav/> */}
-
-      <div>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/search' element={<SearchPage/>}/>
-            <Route path='/movie' element={<Movie/>}/>
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Nav/>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/search' element={<SearchPage/>}/>
+          <Route path='/movie' element={<Movie/>}/>
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
     </>
   );
 }

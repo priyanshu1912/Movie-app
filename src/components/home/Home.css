@@ -1,3 +1,7 @@
+.home-container {
+    padding-top: 10vh;
+}
+
 .search {
     width: 100%;
     padding: 15vh 0;
@@ -8,10 +12,12 @@
 .search-container {
     width: 90%;
     margin: auto;
+    text-align: center;
+    letter-spacing: 2px;
 }
 
 .search-welcome {
-    font-size: 6vh;
+    font-size: 8vh;
     font-weight: bold;
 }
 
@@ -37,7 +43,7 @@
 
 .movies-container {
     width: 90%;
-    margin: 5vh auto;
+    margin: 8vh auto;
 }
 
 .movies-grid-container {

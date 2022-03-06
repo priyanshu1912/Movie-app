@@ -1,12 +1,26 @@
+.movie-container {
+    padding-top: 10vh;
+}
+
 .details {
-    background: black;
-    color: white;
     padding: 15vh 0 10vh 0;
 }
 
 .details-container {
     width: 80%;
     margin: auto;
+}
+
+.movie-overview-icons {
+    margin-right: 0.5vw;
+    font-size: 25px;
+    color: grey;
+}
+
+.movie-overview-date {
+    display: flex;
+    align-items: center;
+    margin: 1vh 0;
 }
 
 .movie-overview-container {
@@ -47,7 +61,7 @@
 }
 
 .movie-overview-ratings {
-    margin: 3vh 0;
+    margin: 8vh 0;
 }
 
 
@@ -60,7 +74,7 @@
 .cast-grid {
     display: grid;
     gap: 2vw;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4,1fr);
 }
 
 .movie-cast {
