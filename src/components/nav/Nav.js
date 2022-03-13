@@ -11,10 +11,10 @@ function Nav() {
                 <div>TV shows</div>
             </div>
 
-            <div className='nav-profile'>
+            {/* <div className='nav-profile'>
                 <div className='login-button'>Login</div>
                 <div className='signup-button'>Signup</div>
-            </div>
+            </div> */}
         </div>
     )
 }
